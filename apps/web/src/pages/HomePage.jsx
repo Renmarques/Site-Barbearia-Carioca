@@ -29,7 +29,7 @@ const UNITS = [
     trinks: 'https://www.trinks.com/barbearia-carioca-ipanema',
     maps: 'https://www.google.com/maps/search/?api=1&query=Barbearia+Carioca+Ipanema+Rua+Visconde+de+Piraj%C3%A1+395',
     hours: ['Segunda a sábado · 9h às 21h', 'Domingo · 10h às 18h'],
-    note: 'No coração de Ipanema, perto de tudo e com agenda até mais tarde.',
+    
   },
   {
     name: 'Leblon',
@@ -41,7 +41,7 @@ const UNITS = [
     trinks: 'https://www.trinks.com/barbearia-carioca',
     maps: 'https://www.google.com/maps/search/?api=1&query=Barbearia+Carioca+Leblon+Rua+General+Ven%C3%A2ncio+Flores+300',
     hours: ['Segunda a sexta · 9h às 21h', 'Sábado · 9h às 19h', 'Domingo · 10h às 17h'],
-    note: 'Atendimento completo no Leblon, com estacionamento gratuito e acessibilidade.',
+    
   },
 ];
 
