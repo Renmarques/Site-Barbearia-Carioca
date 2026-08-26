@@ -61,6 +61,8 @@ h1 { max-width: 900px; font-size: clamp(56px, 6.4vw, 96px); line-height: .98; }
 .button:hover { transform: translateY(-2px); }
 .button-primary { color: white; background: var(--red); }
 .button-primary:hover { background: #b92d33; }
+.button-whatsapp { color: white; background: #73191d; }
+.button-whatsapp:hover { background: #912329; }
 .button-ghost { color: var(--ink); border: 1px solid #c7bcaf; background: transparent; }
 .button-ghost:hover { border-color: var(--ink); }
 .button-light { color: var(--ink); background: white; }
@@ -90,7 +92,7 @@ h1 { max-width: 900px; font-size: clamp(56px, 6.4vw, 96px); line-height: .98; }
 .experience { padding: 110px 0; overflow: hidden; }
 .experience-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: 8vw; align-items: center; }
 .experience-art { position: relative; min-height: 620px; margin: 0; overflow: hidden; border: 1px solid rgba(255,255,255,.14); background: #12100f; }
-.experience-photo { width: 100%; max-width: 470px; min-height: 0; aspect-ratio: 9 / 16; justify-self: center; border: 0; background: transparent; }
+.experience-photo { width: 100%; max-width: 470px; min-height: 0; aspect-ratio: 2 / 3; justify-self: center; border: 0; background: transparent; }
 .experience-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: saturate(.92) contrast(1.02); }
 .experience-copy > p:not(.section-kicker) { max-width: 600px; margin: 30px 0 40px; color: rgba(255,255,255,.62); font-size: 16px; line-height: 1.8; }
 .experience-points { border-top: 1px solid rgba(255,255,255,.13); }
@@ -114,16 +116,22 @@ h1 { max-width: 900px; font-size: clamp(56px, 6.4vw, 96px); line-height: .98; }
 .unit-info p span { display: block; color: var(--muted); }
 .unit-info p strong { font-weight: 700; }
 .unit-info p a { text-decoration: underline; text-decoration-color: #c1b5a8; text-underline-offset: 3px; }
-.unit-actions { display: flex; gap: 10px; margin-top: 26px; }
-.unit-actions .button { flex: 1; }
-.whatsapp-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; color: #4f4b46; font-size: 12px; font-weight: 600; }
-.whatsapp-link:hover { color: var(--red); }
+.unit-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 26px; }
+.booking-actions { display: flex; flex-direction: column; gap: 10px; }
+.booking-actions .button, .unit-actions > .button { width: 100%; }
+.unit-actions > .button { height: 100%; }
 
 .proof { padding: 72px 0; }
 .proof-grid { display: grid; grid-template-columns: .35fr 1.3fr .5fr; gap: 50px; align-items: center; }
 .proof-mark { display: flex; gap: 4px; color: #f2bfc0; }
 .proof blockquote { margin: 0; font-family: 'Playfair Display', serif; font-size: clamp(25px, 2.5vw, 38px); font-style: italic; line-height: 1.25; }
 .proof a { display: inline-flex; align-items: center; justify-content: flex-end; gap: 9px; font-size: 12px; font-weight: 700; }
+.instagram-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 58px; }
+.instagram-item { position: relative; overflow: hidden; aspect-ratio: 3 / 4; border: 1px solid rgba(255,255,255,.2); background: #75171b; }
+.instagram-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s, filter .45s; }
+.instagram-item span { position: absolute; inset: auto 14px 14px; justify-content: center; padding: 11px 14px; color: white; background: rgba(13,13,13,.78); opacity: 0; transform: translateY(8px); transition: opacity .25s, transform .25s; }
+.instagram-item:hover img { filter: brightness(.78); transform: scale(1.035); }
+.instagram-item:hover span { opacity: 1; transform: translateY(0); }
 
 .faq-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: 10vw; align-items: start; }
 .faq-intro { position: sticky; top: 110px; }
@@ -157,7 +165,8 @@ footer { padding: 72px 0 26px; color: rgba(255,255,255,.62); background: #080808
   .experience-grid { gap: 6vw; }
   .experience-art { min-height: 540px; }
   .unit-card { padding: 34px 28px; }
-  .unit-actions { flex-direction: column; }
+  .unit-actions { grid-template-columns: 1fr; }
+  .unit-actions > .button { height: auto; }
   .proof-grid { grid-template-columns: 1fr; gap: 22px; text-align: center; }
   .proof-mark, .proof a { justify-content: center; }
 }
@@ -170,8 +179,8 @@ footer { padding: 72px 0 26px; color: rgba(255,255,255,.62); background: #080808
   .site-header nav > a:not(.nav-cta) { display: none; }
   .nav-cta { padding: 10px 16px; }
   .hero { min-height: 720px; }
-  .hero-image { object-position: 66% center; }
-  .hero-overlay { background: linear-gradient(90deg, rgba(7,7,7,.95), rgba(7,7,7,.42)), linear-gradient(0deg, rgba(5,5,5,.75), transparent 55%); }
+  .hero-image { object-position: center; }
+  .hero-overlay { background: linear-gradient(90deg, rgba(7,7,7,.96), rgba(7,7,7,.34)), linear-gradient(0deg, rgba(5,5,5,.7), transparent 58%); }
   .hero-content { padding-top: 64px; }
   h1 { font-size: clamp(48px, 14vw, 68px); }
   .hero-copy { max-width: 92%; margin-top: 24px; font-size: 16px; }
@@ -191,7 +200,7 @@ footer { padding: 72px 0 26px; color: rgba(255,255,255,.62); background: #080808
   .experience { padding: 82px 0; }
   .experience-grid { grid-template-columns: 1fr; gap: 55px; }
   .experience-art { min-height: 420px; }
-  .experience-photo { max-width: 430px; min-height: 0; aspect-ratio: 9 / 16; }
+  .experience-photo { max-width: 430px; min-height: 0; aspect-ratio: 2 / 3; }
   .experience-photo img { object-position: center; }
   .unit-grid { grid-template-columns: 1fr; margin-top: 42px; }
   .unit-card { padding: 32px 22px; }
@@ -199,6 +208,10 @@ footer { padding: 72px 0 26px; color: rgba(255,255,255,.62); background: #080808
   .unit-card h3 { font-size: 38px; }
   .unit-note { min-height: 0; }
   .proof { padding: 58px 0; }
+  .instagram-gallery { display: flex; gap: 12px; margin-top: 42px; margin-right: -20px; padding-right: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .instagram-gallery::-webkit-scrollbar { display: none; }
+  .instagram-item { flex: 0 0 min(78vw, 330px); scroll-snap-align: start; }
+  .instagram-item span { opacity: 1; transform: none; }
   .faq-grid { grid-template-columns: 1fr; gap: 45px; }
   .faq-intro { position: static; }
   .final-cta { padding: 90px 0; }

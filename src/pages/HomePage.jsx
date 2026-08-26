@@ -24,11 +24,11 @@ const UNITS = [
     eyebrow: 'Zona Sul · Ipanema',
     address: 'Rua Visconde de Pirajá, 395 — Sobreloja',
     city: 'Ipanema, Rio de Janeiro — RJ',
-    phones: ['(21) 2513-1336', '(21) 99405-0680'],
+    phones: ['(21) 2513-1336'],
     whatsapp: 'https://wa.me/5521994050680?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20unidade%20de%20Ipanema.',
     trinks: 'https://www.trinks.com/barbearia-carioca-ipanema',
     maps: 'https://www.google.com/maps/search/?api=1&query=Barbearia+Carioca+Ipanema+Rua+Visconde+de+Piraj%C3%A1+395',
-    hours: ['Segunda a sábado · 9h às 21h', 'Domingo · 10h às 18h'],
+    hours: ['Segunda a sábado · 9h às 21h', 'Domingo · 10h às 17h'],
     
   },
   {
@@ -36,11 +36,11 @@ const UNITS = [
     eyebrow: 'Zona Sul · Leblon',
     address: 'Rua General Venâncio Flores, 300 — Loja B',
     city: 'Leblon, Rio de Janeiro — RJ',
-    phones: ['(21) 2294-9183', '(21) 97692-1084'],
+    phones: [ '(21) 97692-1084'],
     whatsapp: 'https://wa.me/5521976921084?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20unidade%20do%20Leblon.',
     trinks: 'https://www.trinks.com/barbearia-carioca',
     maps: 'https://www.google.com/maps/search/?api=1&query=Barbearia+Carioca+Leblon+Rua+General+Ven%C3%A2ncio+Flores+300',
-    hours: ['Segunda a sexta · 9h às 21h', 'Sábado · 9h às 19h', 'Domingo · 10h às 17h'],
+    hours: ['Segunda a sábado · 9h às 21h', 'Domingo · 10h às 17h'],
     
   },
 ];
@@ -49,15 +49,24 @@ const SERVICES = [
   { icon: Scissors, number: '01', title: 'Corte masculino', text: 'Clássico ou contemporâneo, construído para o seu rosto, rotina e estilo.' },
   { icon: Droplets, number: '02', title: 'Barba', text: 'Desenho, toalha quente e acabamento cuidadoso para valorizar cada linha.' },
   { icon: Sparkles, number: '03', title: 'Cabelo + barba', text: 'A experiência completa para renovar o visual com equilíbrio e precisão.' },
-  { icon: UserRound, number: '04', title: 'Cuidados e acabamento', text: 'Pezinho, sobrancelha, camuflagem e detalhes que deixam tudo no lugar.' },
+  { icon: UserRound, number: '04', title: 'Cuidados e acabamento', text: 'Pezinho, sobrancelha,  e detalhes que deixam tudo no lugar.' },
 ];
 
 const FAQS = [
   ['Preciso agendar com antecedência?', 'Recomendamos o agendamento, principalmente no fim do dia e aos sábados. Pelo Trinks você escolhe unidade, serviço, profissional e o melhor horário disponível.'],
   ['A Barbearia Carioca atende crianças?', 'Sim. As duas unidades atendem adultos e crianças. Ao agendar, escolha o serviço adequado ou fale com a unidade pelo WhatsApp.'],
   ['Quais são as formas de pagamento?', 'As unidades aceitam dinheiro, PIX e as principais bandeiras de cartão. Outras formas podem aparecer no momento do agendamento.'],
-  ['Vocês abrem aos domingos?', 'Sim. Ipanema funciona das 10h às 18h e Leblon das 10h às 17h aos domingos.'],
+  ['Vocês abrem aos domingos?', 'Sim. Funcionamos das 10h às 17h aos domingos.'],
   ['Onde vejo os valores e horários disponíveis?', 'Os valores atualizados, a equipe e os horários livres ficam disponíveis diretamente no Trinks de cada unidade.'],
+];
+
+const INSTAGRAM_GALLERY = [
+  { src: '/images/barbearia/instagram/instagram-01.png', alt: 'Barbeiro da Barbearia Carioca cuidando do acabamento de um cliente' },
+  { src: '/images/barbearia/instagram/instagram-02.png', alt: 'Atendimento de barba na Barbearia Carioca' },
+  { src: '/images/barbearia/instagram/instagram-03.png', alt: 'Barbeiro realizando acabamento de barba em uma cadeira clássica' },
+  { src: '/images/barbearia/instagram/instagram-04.png', alt: 'Corte masculino realizado na Barbearia Carioca' },
+  { src: '/images/barbearia/instagram/instagram-05.png', alt: 'Barba feita com navalha na Barbearia Carioca' },
+  { src: '/images/barbearia/instagram/instagram-06.png', alt: 'Interior de uma unidade da Barbearia Carioca' },
 ];
 
 const faqSchema = {
@@ -91,16 +100,18 @@ function UnitCard({ unit, index }) {
         <div><Phone size={18} /><p>{unit.phones.map((phone) => <a key={phone} href={`tel:+55${phone.replace(/\D/g, '')}`}>{phone}</a>)}</p></div>
       </div>
       <div className="unit-actions">
-        <a className="button button-primary" href={unit.trinks} target="_blank" rel="noreferrer">
-          Agendar no Trinks <ArrowRight size={17} />
-        </a>
+        <div className="booking-actions">
+          <a className="button button-primary" href={unit.trinks} target="_blank" rel="noreferrer">
+            Agendar no Trinks <ArrowRight size={17} />
+          </a>
+          <a className="button button-whatsapp" href={unit.whatsapp} target="_blank" rel="noreferrer">
+            <MessageCircle size={18} /> Agendar via WhatsApp
+          </a>
+        </div>
         <a className="button button-ghost" href={unit.maps} target="_blank" rel="noreferrer">
           <Navigation size={16} /> Como chegar
         </a>
       </div>
-      <a className="whatsapp-link" href={unit.whatsapp} target="_blank" rel="noreferrer">
-        <MessageCircle size={17} /> Falar com {unit.name} no WhatsApp
-      </a>
     </article>
   );
 }
@@ -127,7 +138,10 @@ export default function HomePage() {
 
       <main>
         <section id="inicio" className="hero">
-          <img className="hero-image" src="/images/barbearia/hero-barbearia-carioca-v2.png" alt="Interior real da Barbearia Carioca, com cadeiras clássicas e recepção em madeira" />
+          <picture>
+            <source media="(max-width: 760px)" srcSet="/images/barbearia/hero-barbearia-carioca-mobile.png" />
+            <img className="hero-image" src="/images/barbearia/hero-barbearia-carioca-v2.png" alt="Interior real da Barbearia Carioca, com cadeiras clássicas e recepção em madeira" />
+          </picture>
           <div className="hero-overlay" />
           <div className="hero-content page-shell">
             <p className="eyebrow">Ipanema & Leblon · Rio de Janeiro</p>
@@ -179,8 +193,8 @@ export default function HomePage() {
           <div className="page-shell experience-grid">
             <figure className="experience-art experience-photo">
               <img
-                src="/images/barbearia/barba-navalha-carioca-restaurada.png"
-                alt="Acabamento de barba com navalha e identidade da Barbearia Carioca"
+                src="/images/barbearia/interior-logo-carioca-hd.png"
+                alt="Interior da Barbearia Carioca com o letreiro da marca"
               />
             </figure>
             <div className="experience-copy">
@@ -212,10 +226,20 @@ export default function HomePage() {
         </section>
 
         <section className="proof section-red">
-          <div className="page-shell proof-grid">
-            <div className="proof-mark"><Star size={20} fill="currentColor" /><Star size={20} fill="currentColor" /><Star size={20} fill="currentColor" /><Star size={20} fill="currentColor" /><Star size={20} fill="currentColor" /></div>
-            <blockquote>“O melhor visual é aquele que continua parecendo você — só que ainda melhor.”</blockquote>
-            <a href="https://www.instagram.com/barbeariacariocaoficial/" target="_blank" rel="noreferrer"><Instagram size={19} /> @barbeariacariocaoficial</a>
+          <div className="page-shell">
+            <div className="proof-grid">
+              <div className="proof-mark"><Star size={20} fill="currentColor" /><Star size={20} fill="currentColor" /><Star size={20} fill="currentColor" /><Star size={20} fill="currentColor" /><Star size={20} fill="currentColor" /></div>
+              <blockquote>“O melhor visual é aquele que continua parecendo você — só que ainda melhor.”</blockquote>
+              <a href="https://www.instagram.com/barbeariacariocaoficial/" target="_blank" rel="noreferrer"><Instagram size={19} /> @barbeariacariocaoficial</a>
+            </div>
+            <div className="instagram-gallery" aria-label="Fotos da Barbearia Carioca no Instagram">
+              {INSTAGRAM_GALLERY.map((photo) => (
+                <a className="instagram-item" key={photo.src} href="https://www.instagram.com/barbeariacariocaoficial/" target="_blank" rel="noreferrer">
+                  <img src={photo.src} alt={photo.alt} loading="lazy" />
+                  <span><Instagram size={18} /> Ver no Instagram</span>
+                </a>
+              ))}
+            </div>
           </div>
         </section>
 
