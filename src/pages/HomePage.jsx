@@ -22,7 +22,7 @@ const UNITS = [
   {
     name: 'Ipanema',
     eyebrow: 'Zona Sul · Ipanema',
-    address: 'Rua Visconde de Pirajá, 395 — Sobreloja',
+    address: 'R. Maria Quitéria, 70 - Sobreloja',
     city: 'Ipanema, Rio de Janeiro — RJ',
     phones: ['(21) 2513-1336'],
     whatsapp: 'https://wa.me/5521994050680?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20unidade%20de%20Ipanema.',
@@ -202,7 +202,7 @@ export default function HomePage() {
               <h2>Seu tempo.<br />Seu estilo. <em>Seu lugar.</em></h2>
               <p>Entre a pressa da cidade e o ritmo do Rio, criamos uma pausa bem cuidada. Um ambiente clássico, profissionais atentos e um serviço preciso — do primeiro fio ao último detalhe.</p>
               <div className="experience-points">
-                <div><strong>01</strong><span><b>Escuta antes da tesoura</b>Entendemos sua rotina e o resultado que você busca.</span></div>
+                <div><strong>01</strong><span><b>Escutar antes da tesoura</b>Entendemos sua rotina e o resultado que você busca.</span></div>
                 <div><strong>02</strong><span><b>Cuidado sem exagero</b>Técnica, produtos e acabamento na medida certa.</span></div>
                 <div><strong>03</strong><span><b>Conveniência carioca</b>Duas unidades na Zona Sul, abertas todos os dias.</span></div>
               </div>
